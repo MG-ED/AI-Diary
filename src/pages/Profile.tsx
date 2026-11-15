@@ -43,9 +43,9 @@ export default function Profile() {
     <Card className="mx-auto max-w-2xl">
       <form onSubmit={save} noValidate className="space-y-6">
         <div className="flex items-center gap-5">
-          <button type="button" onClick={() => file.current?.click()} aria-label={t('profile.changePic')} className="group relative size-24 shrink-0 overflow-hidden rounded-full bg-sage/50">
-            {form.avatar ? <img src={form.avatar} alt="" className="size-full object-cover" /> : <span className="grid size-full place-items-center font-display text-4xl text-navy">{(form.name[0] ?? '?').toUpperCase()}</span>}
-            <span className="absolute inset-0 grid place-items-center bg-navy/50 text-ivory opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><Camera className="size-6" /></span>
+          <button type="button" onClick={() => file.current?.click()} aria-label={t('profile.changePic')} className="group relative size-24 shrink-0 overflow-hidden rounded-full bg-brand-soft">
+            {form.avatar ? <img src={form.avatar} alt="" className="size-full object-cover" /> : <span className="grid size-full place-items-center font-display text-4xl text-brand">{(form.name[0] ?? '?').toUpperCase()}</span>}
+            <span className="absolute inset-0 grid place-items-center bg-brand-deep/60 text-white opacity-0 transition group-hover:opacity-100 group-focus-visible:opacity-100"><Camera className="size-6" /></span>
           </button>
           <input ref={file} type="file" accept="image/*" onChange={pick} className="hidden" />
           <div>

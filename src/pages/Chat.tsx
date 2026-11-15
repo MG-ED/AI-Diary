@@ -107,18 +107,18 @@ export default function Chat() {
   return (
     <div className="grid h-[calc(100dvh-8.5rem)] min-h-96 gap-4 lg:grid-cols-[18rem_1fr]">
       <aside className="flex min-h-0 flex-col rounded-2xl border border-line bg-surface max-lg:max-h-40">
-        <button onClick={() => setActiveId(null)} className="m-3 flex items-center justify-center gap-2 rounded-full bg-ink px-4 py-2 text-sm font-medium text-bg hover:opacity-90">
+        <button onClick={() => setActiveId(null)} className="m-3 flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-medium text-white shadow-lg shadow-brand/25 hover:bg-brand-deep">
           <Plus className="size-4" aria-hidden="true" /> {t('chat.new')}
         </button>
         <ul className="min-h-0 flex-1 overflow-y-auto px-2 pb-2">
           {conversations.length === 0 && <li className="px-3 py-4 text-sm text-ink/70">{t('chat.emptyList')}</li>}
           {conversations.map((c) => (
-            <li key={c.id} className={`group flex items-center rounded-xl ${c.id === activeId ? 'bg-sage/40' : 'hover:bg-ink/5'}`}>
+            <li key={c.id} className={`group flex items-center rounded-xl ${c.id === activeId ? 'bg-brand-soft text-brand' : 'hover:bg-brand-soft'}`}>
               <button onClick={() => setActiveId(c.id)} className="min-w-0 flex-1 px-3 py-2.5 text-left">
                 <span className="block truncate text-sm font-medium">{c.title}</span>
                 <span className="text-xs text-ink/70">{timeAgo(c.updatedAt, t)}</span>
               </button>
-              <button onClick={() => remove(c.id)} aria-label={t('chat.delete', { title: c.title })} className="mr-2 rounded-full p-1.5 text-ink/60 opacity-0 hover:bg-ink/10 focus-visible:opacity-100 group-hover:opacity-100">
+              <button onClick={() => remove(c.id)} aria-label={t('chat.delete', { title: c.title })} className="mr-2 rounded-full p-1.5 text-ink/60 opacity-0 hover:bg-brand/15 focus-visible:opacity-100 group-hover:opacity-100">
                 <Trash2 className="size-4" />
               </button>
             </li>
@@ -142,12 +142,12 @@ export default function Chat() {
             <AnimatePresence initial={false}>
               {active.messages.map((m) => (
                 <motion.div key={m.id} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className={`flex ${m.role === 'user' ? 'justify-end' : ''}`}>
-                  <p className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed sm:max-w-[70%] ${m.role === 'user' ? 'rounded-br-md bg-navy text-ivory dark:bg-ivory dark:text-navy' : 'rounded-bl-md bg-bg'}`}>{m.text}</p>
+                  <p className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-4 py-2.5 text-sm leading-relaxed sm:max-w-[70%] ${m.role === 'user' ? 'rounded-br-md bg-brand text-white' : 'rounded-bl-md bg-brand-soft'}`}>{m.text}</p>
                 </motion.div>
               ))}
             </AnimatePresence>
           )}
-          {replying && <p className="w-fit rounded-2xl rounded-bl-md bg-bg px-4 py-2.5 text-sm text-ink/70">{t('chat.writing')}</p>}
+          {replying && <p className="w-fit rounded-2xl rounded-bl-md bg-brand-soft px-4 py-2.5 text-sm text-ink/70">{t('chat.writing')}</p>}
           <div ref={end} />
         </div>
         <form onSubmit={send} className="border-t border-line p-3">
@@ -161,12 +161,12 @@ export default function Chat() {
               rows={1}
               placeholder={listening ? t('chat.listening') : t('chat.placeholder')}
               aria-label={t('chat.message')}
-              className="max-h-32 min-h-11 flex-1 resize-none rounded-2xl border border-line bg-bg px-4 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-ink"
+              className="max-h-32 min-h-11 flex-1 resize-none rounded-2xl border border-line bg-bg px-4 py-2.5 text-sm focus-visible:outline-2 focus-visible:outline-brand"
             />
-            <button type="button" onClick={toggleMic} aria-label={listening ? t('chat.micStop') : t('chat.micStart')} aria-pressed={listening} className={`grid size-11 place-items-center rounded-full border border-line transition ${listening ? 'bg-ink text-bg' : 'hover:bg-ink/10'}`}>
+            <button type="button" onClick={toggleMic} aria-label={listening ? t('chat.micStop') : t('chat.micStart')} aria-pressed={listening} className={`grid size-11 place-items-center rounded-full border border-line transition ${listening ? 'bg-brand text-white' : 'hover:bg-brand-soft'}`}>
               {listening ? <Square className="size-4" /> : <Mic className="size-5" />}
             </button>
-            <button type="submit" disabled={!text.trim() || replying} aria-label={t('chat.send')} className="grid size-11 place-items-center rounded-full bg-ink text-bg transition hover:opacity-90 disabled:opacity-40">
+            <button type="submit" disabled={!text.trim() || replying} aria-label={t('chat.send')} className="grid size-11 place-items-center rounded-full bg-brand text-white transition hover:bg-brand-deep disabled:opacity-40">
               <Send className="size-5" />
             </button>
           </div>

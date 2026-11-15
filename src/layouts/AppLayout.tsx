@@ -31,7 +31,7 @@ function SidebarContent({ onNavigate }: { onNavigate?: () => void }) {
             end={end}
             onClick={onNavigate}
             className={({ isActive }) =>
-              `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${isActive ? 'bg-navy text-ivory' : 'text-ink/75 hover:bg-ink/10 hover:text-ink'}`
+              `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition ${isActive ? 'bg-brand text-white shadow-md shadow-brand/25' : 'text-ink/75 hover:bg-brand-soft hover:text-brand'}`
             }
           >
             <Icon className="size-5" aria-hidden="true" />
@@ -68,7 +68,7 @@ export default function AppLayout() {
           <>
             <motion.div className="fixed inset-0 z-40 bg-navy/50 lg:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)} />
             <motion.aside className="fixed inset-y-0 left-0 z-50 w-72 bg-surface lg:hidden" initial={{ x: '-100%' }} animate={{ x: 0 }} exit={{ x: '-100%' }} transition={{ type: 'tween', duration: 0.2 }}>
-              <button onClick={() => setOpen(false)} aria-label={t('layout.closeMenu')} className="absolute right-3 top-5 rounded-full p-1.5 hover:bg-ink/10">
+              <button onClick={() => setOpen(false)} aria-label={t('layout.closeMenu')} className="absolute right-3 top-5 rounded-full p-1.5 hover:bg-brand-soft">
                 <X className="size-5" />
               </button>
               <SidebarContent onNavigate={() => setOpen(false)} />
@@ -78,7 +78,7 @@ export default function AppLayout() {
       </AnimatePresence>
 
       <header className="sticky top-0 z-20 flex h-16 items-center gap-3 border-b border-line bg-bg/90 px-4 backdrop-blur sm:px-8">
-        <button onClick={() => setOpen(true)} aria-label={t('layout.openMenu')} className="rounded-full p-2 hover:bg-ink/10 lg:hidden">
+        <button onClick={() => setOpen(true)} aria-label={t('layout.openMenu')} className="rounded-full p-2 hover:bg-brand-soft lg:hidden">
           <Menu className="size-5" />
         </button>
         <h1 className="font-display text-xl font-semibold">{title}</h1>
@@ -86,7 +86,7 @@ export default function AppLayout() {
           <span title={t('layout.syncTitle')} className="rounded-full p-2 text-ink/70">
             <CloudOff className="size-5" aria-label={t('layout.syncLabel')} />
           </span>
-          <button onClick={logout} className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium hover:bg-ink/10">
+          <button onClick={logout} className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium hover:bg-brand-soft hover:text-brand">
             <LogOut className="size-4" aria-hidden="true" />
             <span className="hidden sm:inline">{t('layout.logout')}</span>
             <span className="sr-only sm:hidden">{t('layout.logout')}</span>

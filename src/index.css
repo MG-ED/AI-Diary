@@ -1,11 +1,11 @@
 @import 'tailwindcss';
 
-/* Brand palette: Navy #202A3A, Warm Ivory #E9E8E3, Sage #A9B9B7, White #FFFFFF */
+/* Brand palette now follows the landing page: Brand blue #2457E6, Deep #1B3FB8, Soft #E6EFFF, Cyan #38C8F5, Navy ink #202A3A */
 :root {
-  --bg: #e9e8e3;
+  --bg: #f5f8ff;
   --surface: #ffffff;
   --ink: #202a3a;
-  --line: rgb(32 42 58 / 0.14);
+  --line: rgb(36 87 230 / 0.16);
   /* Landing page blues (taken from the AI bot mascot) */
   --brand: #2457e6;
   --brand-deep: #1b3fb8;
@@ -13,8 +13,8 @@
   --land: #f5f8ff;
 }
 .dark {
-  --bg: #151b26;
-  --surface: #202a3a;
+  --bg: #0f1522;
+  --surface: #182033;
   --ink: #e9e8e3;
   --line: rgb(233 232 227 / 0.16);
   --brand: #3f6ff2;
@@ -56,6 +56,6 @@ body {
   }
 }
 ::selection {
-  background: var(--color-sage);
-  color: #202a3a;
+  background: var(--color-brand-soft);
+  color: var(--color-brand-deep);
 }

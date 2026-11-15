@@ -61,7 +61,7 @@ export default function Notes() {
 
       <div className="flex flex-wrap gap-2" role="group" aria-label={t('notes.filterTag')}>
         {['All', ...tags].map((name) => (
-          <button key={name} onClick={() => setFilter(name)} aria-pressed={filter === name} className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${filter === name ? 'bg-navy text-ivory dark:bg-ivory dark:text-navy' : 'border border-line bg-surface hover:border-ink/40'}`}>
+          <button key={name} onClick={() => setFilter(name)} aria-pressed={filter === name} className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${filter === name ? 'bg-brand text-white' : 'border border-line bg-surface hover:border-brand/50 hover:bg-brand-soft'}`}>
             {tag(name)}
           </button>
         ))}
@@ -84,11 +84,11 @@ export default function Notes() {
               </div>
               <p className="mt-2 line-clamp-5 flex-1 whitespace-pre-line text-sm leading-relaxed text-ink/75">{n.body}</p>
               <div className="mt-4 flex items-center justify-between gap-2">
-                <span className="truncate text-xs text-ink/70"><span className="rounded-full bg-sage/40 px-2 py-0.5 text-navy dark:text-ivory">{tag(n.tag)}</span> {timeAgo(n.updatedAt, t)}</span>
+                <span className="truncate text-xs text-ink/70"><span className="rounded-full bg-brand-soft px-2 py-0.5 font-medium text-brand">{tag(n.tag)}</span> {timeAgo(n.updatedAt, t)}</span>
                 <span className="flex shrink-0">
-                  <button onClick={() => pin(n.id)} aria-label={n.pinned ? t('notes.unpin') : t('notes.pin')} className="rounded-full p-1.5 hover:bg-ink/10">{n.pinned ? <PinOff className="size-4" /> : <Pin className="size-4" />}</button>
-                  <button onClick={() => open(n)} aria-label={t('notes.edit')} className="rounded-full p-1.5 hover:bg-ink/10"><Pencil className="size-4" /></button>
-                  <button onClick={() => del(n)} aria-label={t('notes.delete')} className="rounded-full p-1.5 hover:bg-ink/10"><Trash2 className="size-4" /></button>
+                  <button onClick={() => pin(n.id)} aria-label={n.pinned ? t('notes.unpin') : t('notes.pin')} className="rounded-full p-1.5 hover:bg-brand-soft">{n.pinned ? <PinOff className="size-4" /> : <Pin className="size-4" />}</button>
+                  <button onClick={() => open(n)} aria-label={t('notes.edit')} className="rounded-full p-1.5 hover:bg-brand-soft"><Pencil className="size-4" /></button>
+                  <button onClick={() => del(n)} aria-label={t('notes.delete')} className="rounded-full p-1.5 hover:bg-brand-soft"><Trash2 className="size-4" /></button>
                 </span>
               </div>
             </Card>

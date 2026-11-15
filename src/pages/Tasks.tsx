@@ -55,7 +55,7 @@ export default function Tasks() {
 
       <div className="flex flex-wrap gap-2" role="group" aria-label={t('tasks.filterLabel')}>
         {filters.map((f) => (
-          <button key={f} onClick={() => setFilter(f)} aria-pressed={filter === f} className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${filter === f ? 'bg-navy text-ivory dark:bg-ivory dark:text-navy' : 'border border-line bg-surface hover:border-ink/40'}`}>
+          <button key={f} onClick={() => setFilter(f)} aria-pressed={filter === f} className={`rounded-full px-4 py-1.5 text-sm font-medium transition ${filter === f ? 'bg-brand text-white' : 'border border-line bg-surface hover:border-brand/50 hover:bg-brand-soft'}`}>
             {t(filterLabel[f])}
           </button>
         ))}
@@ -68,7 +68,7 @@ export default function Tasks() {
           <ul className="divide-y divide-line">
             {shown.map((task) => (
               <li key={task.id} className="flex items-center gap-3 px-3 py-3">
-                <button onClick={() => toggle(task)} role="checkbox" aria-checked={task.done} aria-label={t(task.done ? 'tasks.markUndone' : 'tasks.markDone', { title: task.title })} className={`grid size-5 shrink-0 place-items-center rounded-md border ${task.done ? 'border-ink bg-ink text-bg' : 'border-ink/40 hover:border-ink'}`}>
+                <button onClick={() => toggle(task)} role="checkbox" aria-checked={task.done} aria-label={t(task.done ? 'tasks.markUndone' : 'tasks.markDone', { title: task.title })} className={`grid size-5 shrink-0 place-items-center rounded-md border ${task.done ? 'border-brand bg-brand text-white' : 'border-ink/40 hover:border-brand'}`}>
                   {task.done && <Check className="size-3.5" />}
                 </button>
                 {editId === task.id ? (
@@ -77,8 +77,8 @@ export default function Tasks() {
                   <>
                     <span className={`flex-1 ${task.done ? 'text-ink/50 line-through' : ''}`}>{task.title}</span>
                     <span className="text-xs text-ink/70">{task.when === 'today' ? t('tasks.today') : t('tasks.upcoming')}</span>
-                    <button onClick={() => (setEditId(task.id), setEditText(task.title))} aria-label={t('tasks.edit')} className="rounded-full p-1.5 hover:bg-ink/10"><Pencil className="size-4" /></button>
-                    <button onClick={() => setTasks((all) => all.filter((x) => x.id !== task.id))} aria-label={t('tasks.delete')} className="rounded-full p-1.5 hover:bg-ink/10"><Trash2 className="size-4" /></button>
+                    <button onClick={() => (setEditId(task.id), setEditText(task.title))} aria-label={t('tasks.edit')} className="rounded-full p-1.5 hover:bg-brand-soft"><Pencil className="size-4" /></button>
+                    <button onClick={() => setTasks((all) => all.filter((x) => x.id !== task.id))} aria-label={t('tasks.delete')} className="rounded-full p-1.5 hover:bg-brand-soft"><Trash2 className="size-4" /></button>
                   </>
                 )}
               </li>

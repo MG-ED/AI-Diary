@@ -42,7 +42,7 @@ export default function Settings() {
         <h2 className="mb-3 font-semibold">{t('settings.theme')}</h2>
         <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label={t('settings.theme')}>
           {themes.map(({ value, label, icon: Icon }) => (
-            <button key={value} role="radio" aria-checked={settings.theme === value} onClick={() => set('theme', value)} className={`flex flex-col items-center gap-1.5 rounded-xl border px-3 py-3 text-sm font-medium transition ${settings.theme === value ? 'border-ink bg-ink/10' : 'border-line hover:border-ink/40'}`}>
+            <button key={value} role="radio" aria-checked={settings.theme === value} onClick={() => set('theme', value)} className={`flex flex-col items-center gap-1.5 rounded-xl border px-3 py-3 text-sm font-medium transition ${settings.theme === value ? 'border-brand bg-brand-soft text-brand' : 'border-line hover:border-brand/50'}`}>
               <Icon className="size-5" aria-hidden="true" /> {t(label)}
             </button>
           ))}
@@ -84,7 +84,7 @@ export default function Settings() {
               onChange={(e) => set('volume', Number(e.target.value) / 100)}
               onPointerUp={preview}
               onKeyUp={previewOnKey}
-              className="w-32 accent-navy sm:w-40 dark:accent-ivory"
+              className="w-32 accent-brand sm:w-40"
             />
             <span className="w-10 text-right text-sm tabular-nums text-ink/70" aria-hidden="true">{percent}%</span>
           </div>

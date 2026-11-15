@@ -52,7 +52,7 @@ export default function Dashboard() {
             <ul className="divide-y divide-line">
               {recentChats.map((c) => (
                 <li key={c.id}>
-                  <Link to="/app/chat" state={{ id: c.id }} className="flex items-center justify-between gap-4 rounded-lg py-3 hover:bg-ink/5">
+                  <Link to="/app/chat" state={{ id: c.id }} className="flex items-center justify-between gap-4 rounded-lg py-3 hover:bg-brand-soft">
                     <span className="min-w-0">
                       <span className="block truncate font-medium">{c.title}</span>
                       <span className="block truncate text-sm text-ink/70">{c.messages.at(-1)?.text}</span>
@@ -73,8 +73,8 @@ export default function Dashboard() {
             <ul className="space-y-2">
               {todays.map((task) => (
                 <li key={task.id}>
-                  <button onClick={() => toggle(task.id)} className="flex w-full items-center gap-3 rounded-lg px-1 py-1.5 text-left hover:bg-ink/5">
-                    <span className={`grid size-5 shrink-0 place-items-center rounded-md border ${task.done ? 'border-ink bg-ink text-bg' : 'border-ink/40'}`}>{task.done && <Check className="size-3.5" />}</span>
+                  <button onClick={() => toggle(task.id)} className="flex w-full items-center gap-3 rounded-lg px-1 py-1.5 text-left hover:bg-brand-soft">
+                    <span className={`grid size-5 shrink-0 place-items-center rounded-md border ${task.done ? 'border-brand bg-brand text-white' : 'border-ink/40'}`}>{task.done && <Check className="size-3.5" />}</span>
                     <span className={task.done ? 'text-ink/50 line-through' : ''}>{task.title}</span>
                   </button>
                 </li>
@@ -93,7 +93,7 @@ export default function Dashboard() {
           ) : (
             <div className="grid gap-3 sm:grid-cols-3">
               {recentNotes.map((n) => (
-                <Link key={n.id} to="/app/notes" className="rounded-xl bg-bg p-4 hover:bg-sage/30">
+                <Link key={n.id} to="/app/notes" className="rounded-xl bg-brand-soft p-4 hover:bg-brand/15">
                   <p className="line-clamp-1 font-medium">{n.title}</p>
                   <p className="mt-1 line-clamp-3 text-sm text-ink/70">{n.body}</p>
                 </Link>
@@ -108,7 +108,7 @@ export default function Dashboard() {
             {days.map((d, i) => (
               <div key={i} className="flex h-full flex-1 flex-col items-center gap-1.5">
                 <div className="flex w-full flex-1 items-end">
-                  <div className="w-full rounded-md bg-sage" style={{ height: `${Math.max(6, (d.count / max) * 100)}%` }} />
+                  <div className="w-full rounded-md bg-linear-to-t from-brand to-cyan" style={{ height: `${Math.max(6, (d.count / max) * 100)}%` }} />
                 </div>
                 <span className="text-xs text-ink/70">{d.label.slice(0, 2)}</span>
               </div>
